@@ -1,7 +1,7 @@
 import glob as gb
 from pathlib import Path
-import pandas as pd
 from fpdf import FPDF
+import re
 
 # Create a list of txt filepaths
 filepaths = gb.glob("files/*.txt")
@@ -21,6 +21,16 @@ for filepath in filepaths:
     # Add the name to the pdf
     pdf.set_font(family="Arial", style="B", size=16)
     pdf.cell(w=0, h=10, txt=name, align="L")
+
+    with open(filepath, "r") as file:
+        content = file.read()
+
+    # Remove [1], [2], ... occurrences within sentences
+    content = re.sub(r'\[(\d+)\]', '', content)
+
+    pdf.set_font(family="Times", size=10)
+    pdf.set_xy(10, 18)
+    pdf.multi_cell(w=0, h=6, txt=content)
 
 
 # Produce the pdf
