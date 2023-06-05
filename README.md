@@ -1,6 +1,3 @@
 # what does this program do?
 
-This program accesses various text files 
-in a given directory and read 
-the content of each text file in a succeeding
-pages of a pdf.
+This program interacts with a designated directory, accessing multiple text files within it. It then reads the content of each text file and sequentially incorporates it into separate pages of a PDF document, ensuring a coherent and organized presentation of the text file content.
